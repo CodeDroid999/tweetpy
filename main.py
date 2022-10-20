@@ -16,6 +16,49 @@ import configparser
 import pandas as pd
 import sys
 
+
+
+
+
+from datetime import datetime
+from threading import Timer
+
+x=datetime.today()
+y=x.replace(day=x.day+1, hour=1, minute=0, second=0, microsecond=0)
+delta_t=y-x
+
+secs=delta_t.seconds+1
+
+def hello_world():
+    print "hello world"
+    #...
+
+t = Timer(secs, hello_world)
+t.start()
+
+
+y = x.replace(day=x.day, hour=1, minute=0, second=0, microsecond=0) + timedelta(days=1)
+
+
+from datetime import datetime, timedelta
+from threading import Timer
+
+x=datetime.today()
+y = x.replace(day=x.day, hour=1, minute=0, second=0, microsecond=0) + timedelta(days=1)
+delta_t=y-x
+
+secs=delta_t.total_seconds()
+
+def hello_world():
+    print "hello world"
+    #...
+
+t = Timer(secs, hello_world)
+t.start()
+
+
+
+
 '''
 OAUTH
 '''
@@ -30,15 +73,7 @@ auth.set_access_token(OAUTH_TOKEN, OATH_TOKEN_SECRET)
 api = tweepy.API(auth)
 
 '''
-connect mongodb database
-'''
 
-client = MongoClient()
-db = client.tweet_db
-tweet_collection = db.tweet_collection
-tweet_collection.create_index([("id", pymongo.ASCENDING)],unique = True) # make sure the collected tweets are unique 
-
-'''
 define query in Stream API
 '''
 
@@ -75,6 +110,7 @@ fetch data
 
 
 '''
+
 query collected data in MongoDB
 '''
  

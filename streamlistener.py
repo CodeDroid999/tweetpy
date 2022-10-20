@@ -26,3 +26,21 @@ myStream.filter(track=track)#  (locations = locations)   #Use either track or lo
 #Authorize the REST API
 rest_auth = twitter.oauth.OAuth(OAUTH_TOKEN,OATH_TOKEN_SECRET,CONSUMER_KEY,CONSUMER_SECRET)
 rest_api = twitter.Twitter(auth=rest_auth)
+
+def on_response(response:tweepy.StreamResponse):
+    tweet:tweepy.Tweet = response.data
+    users:list = response.includes.get("users") 
+    # response.includes is a dictionary representing all the fields (user_fields, media_fields, etc)
+    # response.includes["users"] is a list of `tweepy.User`
+    # the first user in the list is the author (at least from what I've tested)
+    # the rest of the users in that list are anyone who is mentioned in the tweet
+    
+    author_username = users and users[0].username
+    print(tweet.text, author_username)
+
+streaming_client = tweepy.StreamingClient(bearer_token)
+streaming_client.on_response = on_response
+streaming_client.sample(threaded=True, user_fields = ["id", "name", "username"]) # using user fields 
+
+time.sleep(DURATION)
+streaming_client.disconnect()
