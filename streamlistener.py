@@ -1,17 +1,31 @@
+#import libraries and functions
+import tweepy
+import configparse
+import CONSUMER_KEY
+import CONSUMER_SECRET
+import OAUTH_TOKEN
+import OATH_TOKEN_SECRET
+import tweet_collection
+
+
+
+
 stream_auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 stream_auth.set_access_token(OAUTH_TOKEN, OATH_TOKEN_SECRET)
 
-strem_api = tweepy.API(stream_auth)
+#connect to the tweepy API server
+stream_api = tweepy.API(stream_auth)
 
-track = ['election'] # define the keywords, tweets contain election
+track = ['election' 'DonaldTrump''trump''biden''trumpVsBiden''republican-in-name-only'
+           'Joebiden''election2016''america-decides''the-great-meme-war''race-traitor'
+           'cuckservative''presidential-election'] # define the keywords, tweets that contain the keywords 
 
-locations = [-78.9326449,38.4150904,-78.8816972,38.4450731] #defin the location, in Harrisonburg, VA
 
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         print (status.id_str)
         try:
-            tweet_collection.insert_one(status._json)
+            tweet_collection.insert_one(status._json) #on error
         except:
             pass
   
@@ -20,6 +34,6 @@ class MyStreamListener(tweepy.StreamListener):
             #returning False in on_data disconnects the stream
             return False
 myStreamListener = MyStreamListener()
-myStream = tweepy.Stream(auth = strem_api.auth, listener=myStreamListener)
-myStream.filter(track=track)#  (locations = locations)   #Use either track or locations
+myStream = tweepy.Stream(auth = stream_api.auth, listener=myStreamListener)
+myStream.filter(track=track)    #Use either track or locations
 
