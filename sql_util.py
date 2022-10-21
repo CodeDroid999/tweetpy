@@ -1,17 +1,10 @@
-import pyodbc
+import pandas as pd
 
-connection = pyodbc.connect('Driver={SQL Server};'
-                      'Server=KHBW001;'
-                      'Database=tempdb;'
-                      'Trusted_Connection=yes;')
+df=pd.read_json("file.json",orient='columns')
+rows = []
+for i,r in df.iterrows():
+    rows.append({'eventid':i+1,'timemillis':r['events']['timemillis'],'name':r['events']['name']})
+df = pd.DataFrame(rows)
+print(df)
 
-cursor = connection.cursor()
-cursor.execute(
-    "CREATE TABLE NewTestPyTable(Symbol varchar(15), Shares integer, Price integer)")  # creates new table
-params = [('ETH', 55, 199),
-          ('KHC', 66, 33)]
-# insert two records into new table
-cursor.executemany(
-    "INSERT INTO tempdb.dbo.NewTestPyTable (Symbol, Shares, Price) VALUES (?, ?, ?)", params)
 
-connection.commit()
