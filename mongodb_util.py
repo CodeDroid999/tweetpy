@@ -1,9 +1,11 @@
+
+
+
+
 import pymongo
 import mongod_connect
 
-
-
-
+#create database stream object
 client = MongoClient(mongod_connect)
 db = client.tweetstream                   # use or create a database named tweetstream
 tweet_collection = db.tweet_trump         #use or create a collection named tweet_trump
