@@ -42,7 +42,7 @@ def run_scripts(configparse):
     print 'script successfully executed, proceeding to next'
     else
     #on error
-    print "error in running_scripts"
+    print "error in running scripts"
 
 
 # run the scraping for one hour
