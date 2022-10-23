@@ -14,19 +14,21 @@ for i,r in df.iterrows():                            #process the data into rows
 #query collected json data  
 def get_trump(trump_tweets):#reading json file saved to local machine
  
-    SELECT 
+    SELECT author_id,text,history
+    FROM trump_tweets
+    WHERE trump
+    GROUP BY author_id,text,created_at,updated_at
     ID, 
     Details, 
     JSON_VALUE(details,'$.author_id') AS author,
     JSON_VALUE(details,'$.text') AS text,
     JSON_VALUE(details,'$.history') AS Created_at
     JSON_VALUE(details,'$.history') AS updated_at
-FROM tweets_trump.json
 
 
 CREATE TABLE tweets_trump (
    ...
-   Country AS JSON_VALUE(trump_tweets, '$.Country''$.author''$.text''$.created_at''$.updated_at') PERSISTED,
+   Country AS JSON_VALUE(trump_tweets,'$.author''$.text''$.created_at''$.updated_at') PERSISTED,
    ...
 )
 
@@ -34,39 +36,25 @@ CREATE INDEX IX_ThatTable_Country ON dbo.tweets_trump(author,text,created_at,upd
 
 #reading biden_tweets saved to local machine
  def get_biden(biden_tweets):
-      SELECT 
+    SELECT author_id,text,history
+    FROM biden_tweets
+    WHERE biden
+    GROUP BY author_id,text,created_at,updated_at
     ID, 
     Details, 
     JSON_VALUE(details,'$.author_id') AS author,
     JSON_VALUE(details,'$.text') AS text,
     JSON_VALUE(details,'$.history') AS Created_at
     JSON_VALUE(details,'$.history') AS updated_at
-FROM tweets_trump.json
 
 
 CREATE TABLE tweets_trump (
    ...
-   Country AS JSON_VALUE(biden_tweets, '$.Country''$.author''$.text''$.created_at''$.updated_at') PERSISTED,
+   Country AS JSON_VALUE(biden_tweets,'$.author''$.text''$.created_at''$.updated_at') PERSISTED,
    ...
 )
 
 CREATE INDEX IX_ThatTable_Country ON dbo.biden_trump(author,text,created_at,updated_at)
 
-#saving the queries into sql tables
-for tweet in result1:
-    try:
-        tweet_collection.insert(
-            get_trump(tweet_trump)#inserting and saving all trump tweets into tweet_trump sql table
-        )
-    except:
-        pass
-
-for tweet in result2:
-    try:
-        tweet_collection.insert(
-            get_biden(tweet_biden)#inserting and saving all biden tweets into tweet_biden sql table
-        )
-    except:
-        pass
    
       
