@@ -16,11 +16,10 @@ stream_auth.set_access_token(OAUTH_TOKEN, OATH_TOKEN_SECRET)
 #connect to the tweepy API server
 stream_api = tweepy.API(stream_auth)
 
+# define the keywords, tweets that contain the keywords
 track = ['election' 'DonaldTrump''trump''biden''trumpVsBiden''republican-in-name-only'
            'Joebiden''election2016''america-decides''the-great-meme-war''race-traitor'
-           'cuckservative''presidential-election'] # define the keywords, tweets that contain the keywords 
-
-
+           'cuckservative''presidential-election']  
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         print (status.id_str)

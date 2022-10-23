@@ -16,26 +16,33 @@ import configparser
 import pandas as pd
 import sys
 
-def run_scripts():
-    print "error in running_scripts"
-
-if __name__ == '__main__':
-    # executed as script
-    print 'script successfully executed, proceeding to next'
-    run_scripts()
-
-
-import streamlistener
+#import scripts
+import configparse
+import StreamListener.py
 import mongodb_util
 import sql_util
-import configparse
 
-def service_func():
-    print 'service func'
 
-if __name__ == '__main__':
-    service_func()
-    run_scripts.run1-4()
+#running the scripts
+def run_scripts(configparse):
+    if __name__ == '__main__':
+    # executed script
+    print 'script successfully executed, proceeding to next'
+    run_scripts(StreamListener):
+    if __name__ == '__main__':
+    # executed as script
+    print 'script successfully executed, proceeding to next'
+    run_scripts(mongodb_util)
+    if __name__ == '__main__':
+    # executed as script
+    print 'script successfully executed, proceeding to next'
+    run_scripts(sql_util)
+    if __name__ == '__main__':
+    # executed as script
+    print 'script successfully executed, proceeding to next'
+    else
+    #on error
+    print "error in running_scripts"
 
 
 # run the scraping for one hour
