@@ -1,17 +1,23 @@
-# tweetpy
+### tweetpy
 Semi-Structured Data Processing with sql Database Server , MongoDB and Python. Collecting a Real Time Social Media Data from Twitter Data Stream and Creating  a sql Database in MongoDB . 
-2 Big Data and Parallel Database Processing Systems 
-Sunnie Chung 
+
+### Get the Code
+```
+
+$ git clone https://github.com/CodeDroid999/tweetpy.git
+
+```
+### Project description
 Semi-Structured Data Processing with sql Database Server 
 Collecting a Real Time Social Media Data from Twitter Data Stream and Creating 
 a sql Database in MongoDB 
 Mapping Strategies from Semi-Structured Data Format JSON to Relational Table 
-This Lab is to Learn: 
+# Lab is to Learn: 
 1. Common logging structure of a social media server Twitter, Facebook, LinkedIn 
 2. How to collect a social media stream data in a real time 
 3. JSON data processing with sql MongoDB 
 4. Transformation Strategies from Semi-Structured Data Format JSON to Relational Tables 
-The Required Tasks are: 
+# The Required Tasks are: 
 1. Collect Social Media Data Steam from a Twitter to a Local File for the messages on the 
 Presidential Election with Donald Trump and Joe Biden. Choose as many Topic words 
 related to the subject: Presidential Election with Donald Trump and Joe Biden to 
@@ -42,12 +48,12 @@ $Group
 
 
 
-Lab Assignment 3
+### Lab Assignment 3
 CIS 612 Big Data and Parallel Database Processing Systems
 Sunnie Chung
 
  
-Introduction
+### Introduction
 The main purpose of this project is to design and implement a program to collect a real time social media data from Twitter data stream, create a SQL Database in MongoDB, and process the JSON tweets into a relational database with SQL. It enables students to apply the knowledge learned in common logging structures of a social media server, how to collect a social media data stream in real time, JSON data processing with SQL MongoDB, and transformation strategies of semi-structured JSON data format to relational databases.
 Program architecture
 The program is implemented as a command line script that executes the whole procedure from start to finish automatically. The program comprises of the following components listed below alongside their functionality:
@@ -77,29 +83,24 @@ You can install the requirements by using the following steps:
 2.	Open the terminal in current directory
 3.	Cd to the Project root directory folder
 4.	Run the command: pip install -r requirements.txt
-How to run
+### How to run
 Step 1: After signing up for Twitter’s Developer account and getting the access tokens for their API, replace
 the ‘api_key’ and ‘access_token’ in the configparse.py file with actual API key and access token respectively.
 Step 2: To execute the program run the following command I the command-line:
                      py main.py
 
 
-When you run this command the following tasks are run:
+# When you run this command the following tasks are run:
 1.	The program logs into twitter social media server. User is notified in-case of an error in authentication
 2.	Scraping-the program scrapes Twitter for messages on presidential election with Donald Trump and Joe Biden using the keywords provided. Scraping is done for one hour before being stopped.s
 3.	All tweets are saved locally into a MongoDB database. Only unique tweets are saved. Below is a screenshot of a Mongo database that was used in testing this program.
  
- Fig 1.1: Mongo Database View after setup and Data Insertion
-
-4.	Fetching tweets-the program fetches all tweets for each president separately. This results in structured JSON data which the program saves in a json folder that resides in the public folder-located in the root folder. When this is executed you see the following in your predefined SQL database in the root-virtual environment folder.
+ 4.	Fetching tweets-the program fetches all tweets for each president separately. This results in structured JSON data which the program saves in a json folder that resides in the public folder-located in the root folder. When this is executed you see the following in your predefined SQL database in the root-virtual environment folder.
 
  
-Fig 1.2: Donald Trump’s SQL Table 
 
 
-Fig 1.3: Joe Biden’s SQL  Table
-
-References
+## References
 https://developer.twitter.com/en/docs/api-reference-index 
 https://docs.tweepy.org/en/v3.9.0/streaming_how_to.html
 
